@@ -1,0 +1,14 @@
+{
+	"name": "flutter-version-finder-example",
+	"version": "0.0.0",
+	"description": "Example project to test flutter-version-finder",
+	"main": "dist/index.js",
+	"module": "dist/index.cjs",
+	"types": "dist/index.d.ts",
+	"sideEffects": false,
+	"author": "web-pacotes",
+	"license": "MIT",
+	"dependencies": {
+		"flutter-version-finder": "file:../"
+	}
+}
