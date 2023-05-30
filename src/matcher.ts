@@ -3,10 +3,10 @@ import supportedVersions, { FallbackVersion, Version } from "./version";
 export default function (dart: string): Version {
     const version = dart;
 
-    const supportedFlutterVersion = supportedVersions.find((x) => x.dart === version);
+    const supportedVersion = supportedVersions.find((x) => x.dart === version);
 
-    if (supportedFlutterVersion) {
-        return supportedFlutterVersion
+    if (supportedVersion) {
+        return supportedVersion
     };
 
     const higherVersions = supportedVersions.filter((x) => x.dart > version);
