@@ -2,7 +2,7 @@ import { default as finder } from 'flutter-version-finder';
 import { readFileSync } from 'fs';
 
 function main() {
-	// Read the content of a pubspec.yaml or pubspec-lock.yaml file
+	// Read the content of a pubspec.yaml or pubspec.lock file
 	const path = 'example/example.lock';
 
 	const data = readFileSync(path).toString();
