@@ -1,6 +1,6 @@
 import { describe, expect, test } from '@jest/globals';
 import matcher from './matcher';
-import { FallbackVersion, Version } from './version';
+import { FallbackVersion, UnknownDartVersion, Version } from './version';
 
 describe('matcher', function () {
 	describe('dart', function () {
@@ -23,7 +23,7 @@ describe('matcher', function () {
 		});
 
 		test('unknown version should match fallback version', () => {
-			const version = '?';
+			const version = UnknownDartVersion;
 
 			const matchedVersion = matcher(version);
 			const expectedVersion = FallbackVersion;

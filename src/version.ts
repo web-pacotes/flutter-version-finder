@@ -95,5 +95,6 @@ const supportedVersions = [
 ] satisfies Version[];
 
 export const FallbackVersion = supportedVersions[0];
+export const UnknownDartVersion = '?';
 
 export default supportedVersions;
