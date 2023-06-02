@@ -1,5 +1,5 @@
 import matcher from "./matcher";
-import parse from "./parse";
+import parse from "./parser";
 import { UnknownDartVersion, Version } from "./version";
 
 /**

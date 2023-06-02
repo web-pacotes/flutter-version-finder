@@ -1,5 +1,5 @@
-const lockDartVersionRegex = /dart: "(.){0,2}(([0-9]\.*){3})(.*)"/g;
-const yamlDartVersionRegex = /sdk: '(.){0,2}(([0-9]{1,}\.*){3})(.*)'/g;
+const lockDartVersionRegex = /dart: ["|'](.){0,2}(([0-9]{1,}\.*){3})(.*)["|']/g;
+const yamlDartVersionRegex = /sdk: ["|'](.){0,2}(([0-9]{1,}\.*){3})(.*)["|']/g;
 
 /**
  * Extracts the Dart version supported in a Flutter project from a pubspec file. This file can be either the pubspec.lock or pubspec.yaml file.
@@ -14,9 +14,13 @@ export default function (yaml: string) {
 }
 
 function extractDartVersionFromLock(yaml: string) {
+	lockDartVersionRegex.lastIndex = 0;
+
 	return lockDartVersionRegex.exec(yaml)?.at(2);
 }
 
 function extractDartVersionFromYAML(yaml: string) {
+	yamlDartVersionRegex.lastIndex = 0;
+
 	return yamlDartVersionRegex.exec(yaml)?.at(2);
 }
