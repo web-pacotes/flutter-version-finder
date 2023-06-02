@@ -1,6 +1,6 @@
 {
 	"name": "@web-pacotes/flutter-version-finder",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"description": "Micro library that finds the appropriate Flutter version to use on a Flutter project",
 	"main": "dist/index.js",
 	"module": "dist/index.cjs",
