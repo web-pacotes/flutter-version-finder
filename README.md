@@ -8,19 +8,34 @@ Micro library that finds the appropriate Flutter version to use on a Flutter pro
 
 ## How to use
 
-todo: describe usage
+To use this package, start by reading the content of a `pubspec.yaml` or `pubspec.lock` file. Then, import the finder function and feed it the file content.
 
 ```typescript
-todo: include usage code here
+import { default as finder } from 'flutter-version-finder';
+import { readFileSync } from 'fs';
+
+// Read the content of a pubspec.yaml or pubspec.lock file
+const path = 'example/example.lock';
+
+const data = readFileSync(path).toString();
+
+// Find the matching Flutter version
+const result = finder(data);
+
+// Hoooraaaay! It should print the Flutter version that is compatible with the lock file
+console.log(result); // { flutter: '3.10.0', dart: '3.0.0' }
+```
+
+Additionally, you can finder Flutter versions directly from the CLI:
+
+```bash
+npx flutter-version-finder --path=example/example.lock
 ```
 
 ## Features
 
-todo: enumerate features package currently provides
-
-## Missing features
-
-todo: enumerate features package does not provide
+- Find supported Flutter version from `pubspec.yaml`
+- Find supported Flutter version from `pubspec.lock`
 
 ---
 
@@ -58,12 +73,3 @@ Found any bug (including typos) in the package? Do you have any suggestion
 or feature to include for future releases? Please create an issue via
 GitHub in order to track each contribution. Also, pull requests are very
 welcome!
-
-### Contact
-
-This template was prepared by:
-
-- João Freitas, @freitzzz
-- Rute Santos, @rutesantos4
-
-Contact us for freelancing work!
