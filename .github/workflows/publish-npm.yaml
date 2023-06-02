@@ -17,6 +17,7 @@ jobs:
           cache: 'npm'
 
       - run: npm install --frozen-lockfile
+
       - name: Create Release Pull Request or Publish
         id: changesets
         uses: changesets/action@v1
@@ -25,3 +26,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Notify if published
+        if: steps.changesets.outputs.published == 'true'
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          event-type: npm-published
