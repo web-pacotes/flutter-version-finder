@@ -1,8 +1,14 @@
+/**
+ * Defines an association of a Flutter version with its compatible Dart version
+ */
 export type Version = {
 	flutter: string;
 	dart: string;
 };
 
+/**
+ * A set of {@link Version} with all supported Flutter versions as described in https://docs.flutter.dev/release/archive.
+ */
 const supportedVersions = [
 	{ flutter: '3.10.2', dart: '3.0.2' },
 	{ flutter: '3.10.1', dart: '3.0.1' },
