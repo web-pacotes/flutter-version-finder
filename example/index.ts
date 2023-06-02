@@ -10,7 +10,7 @@ function main() {
 	// Find the matching Flutter version
 	const result = finder(data);
 
-	// Hoooraaaay! It should print the Flutter version that is compatible with the lock file 
+	// Hoooraaaay! It should print the Flutter version that is compatible with the lock file
 	console.log(result);
 }
 

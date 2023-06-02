@@ -2,7 +2,7 @@ import supportedVersions, { FallbackVersion, Version } from './version';
 
 /**
  * Finds the supported {@link Version} for a specific Flutter project, by matching the supported Dart version.
- *  
+ *
  * @param dart - A string that identifies the Dart version in the semantic versioning format
  * @returns The matched {@link Version} or as a fallback {@link FallbackVersion}
  */
