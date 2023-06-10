@@ -12,7 +12,9 @@ export type Version = {
 	channel: Channel;
 };
 
-type ComparableVersion = {
+export type ChannelessVersion = Partial<Omit<Version, 'channel'>>;
+
+export type ComparableVersion = {
 	flutterNumber: number;
 	dartNumber: number;
 } & Version;
@@ -1439,10 +1441,10 @@ const supportedVersions = [
 	}
 ] satisfies ComparableVersion[];
 
-export const FallbackStableVersion = <Version>{
+export const FallbackStableVersion = <ComparableVersion>{
 	...supportedVersions.find((x) => x.channel === 'stable')
 };
-export const FallbackBetaVersion = <Version>{
+export const FallbackBetaVersion = <ComparableVersion>{
 	...supportedVersions.find((x) => x.channel === 'beta')
 };
 export const UnknownDartVersion = '?';
