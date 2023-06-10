@@ -1,4 +1,11 @@
-import supportedVersions, { Channel, FallbackBetaVersion, FallbackStableVersion, UnknownDartVersion, Version, versionToNumber } from './version';
+import supportedVersions, {
+	Channel,
+	FallbackBetaVersion,
+	FallbackStableVersion,
+	UnknownDartVersion,
+	Version,
+	versionToNumber
+} from './version';
 
 /**
  * Finds the supported {@link Version} for a specific Flutter project, by matching the supported Dart version.
@@ -15,15 +22,21 @@ export default function (dart: string, channel: Channel = 'stable'): Version {
 
 	const dartVersionNumber = versionToNumber(dart);
 
-	const supportedVersion = supportedVersions.find((x) => x.dartNumber === dartVersionNumber && x.channel === channel);
+	const supportedVersion = supportedVersions.find(
+		(x) => x.dartNumber === dartVersionNumber && x.channel === channel
+	);
 
 	if (supportedVersion) {
 		return supportedVersion;
 	}
 
-	const higherVersions = supportedVersions.filter((x) => x.dartNumber > dartVersionNumber && x.channel === channel);
+	const higherVersions = supportedVersions.filter(
+		(x) => x.dartNumber > dartVersionNumber && x.channel === channel
+	);
 
 	return higherVersions.length > 0
 		? higherVersions[higherVersions.length - 1]
-		: (channel === 'stable' ? FallbackStableVersion : FallbackBetaVersion);
+		: channel === 'stable'
+		? FallbackStableVersion
+		: FallbackBetaVersion;
 }

@@ -8,7 +8,11 @@ describe('matcher', function () {
 			const version = '3.0.0';
 
 			const matchedVersion = matcher(version);
-			const expectedVersion = <Version>{ flutter: '3.10.0', dart: '3.0.0', channel: 'stable' };
+			const expectedVersion = <Version>{
+				flutter: '3.10.0',
+				dart: '3.0.0',
+				channel: 'stable'
+			};
 
 			expect(matchedVersion).toMatchObject(expectedVersion);
 		});
@@ -17,7 +21,11 @@ describe('matcher', function () {
 			const version = '2.19.6';
 
 			const matchedVersion = matcher(version);
-			const expectedVersion = <Version>{ flutter: '3.7.12', dart: '2.19.6', channel: 'stable' };
+			const expectedVersion = <Version>{
+				flutter: '3.7.12',
+				dart: '2.19.6',
+				channel: 'stable'
+			};
 
 			expect(matchedVersion).toMatchObject(expectedVersion);
 		});
@@ -38,9 +46,9 @@ describe('matcher', function () {
 			const channel = 'stable';
 
 			const matchedVersion = matcher(version, channel);
-			const expectedVersion = <Pick<Version, 'channel'>>{ channel: 'stable' }
+			const expectedVersion = <Pick<Version, 'channel'>>{ channel: 'stable' };
 
-			expect(matchedVersion).toMatchObject(expectedVersion)
+			expect(matchedVersion).toMatchObject(expectedVersion);
 		});
 
 		test('beta channel always matches a beta channel version', () => {
@@ -48,8 +56,7 @@ describe('matcher', function () {
 			const channel = 'beta';
 
 			const matchedVersion = matcher(version, channel);
-			const expectedVersion = <Pick<Version, 'channel'>>{ channel: 'beta' }
-
+			const expectedVersion = <Pick<Version, 'channel'>>{ channel: 'beta' };
 
 			expect(matchedVersion).toMatchObject(expectedVersion);
 		});
