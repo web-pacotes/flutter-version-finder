@@ -1,6 +1,11 @@
 import matcher from './matcher';
 import parse from './parser';
-import { Channel, UnknownDartVersion, Version, versionToNumber } from './version';
+import {
+	Channel,
+	UnknownDartVersion,
+	Version,
+	versionToNumber
+} from './version';
 
 /**
  * Find the supported Flutter version for a pubspec.yaml/lock file.

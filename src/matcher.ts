@@ -1,9 +1,9 @@
 import supportedVersions, {
 	Channel,
+	ComparableVersion,
 	FallbackBetaVersion,
 	FallbackStableVersion,
 	UnknownDartVersion,
-	Version,
 	versionToNumber
 } from './version';
 
@@ -13,7 +13,10 @@ import supportedVersions, {
  * @param dart - A string that identifies the Dart version in the semantic versioning format
  * @returns The matched {@link Version} or as a fallback {@link FallbackStableVersion}
  */
-export default function (dart: string, channel: Channel = 'stable'): Version {
+export default function (
+	dart: string,
+	channel: Channel = 'stable'
+): ComparableVersion {
 	const version = dart;
 
 	if (version === UnknownDartVersion) {

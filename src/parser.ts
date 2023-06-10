@@ -1,7 +1,8 @@
-import { ChannelessVersion } from "./version";
+import { ChannelessVersion } from './version';
 
 const lockDartVersionRegex = /dart: ["|'](.){0,2}(([0-9]{1,}\.*){3})(.*)["|']/g;
-const lockFlutterVersionRegex = /flutter: ["|'](.){0,2}(([0-9]{1,}\.*){3})(.*)["|']/g;
+const lockFlutterVersionRegex =
+	/flutter: ["|'](.){0,2}(([0-9]{1,}\.*){3})(.*)["|']/g;
 const yamlDartVersionRegex = /sdk: ["|'](.){0,2}(([0-9]{1,}\.*){3})(.*)["|']/g;
 
 /**
@@ -13,12 +14,13 @@ const yamlDartVersionRegex = /sdk: ["|'](.){0,2}(([0-9]{1,}\.*){3})(.*)["|']/g;
 export default function (yaml: string) {
 	const flutterVersion = extractFlutterVersionFromLock(yaml);
 
-	const dartVersion = extractDartVersionFromLock(yaml) ?? extractDartVersionFromYAML(yaml);
+	const dartVersion =
+		extractDartVersionFromLock(yaml) ?? extractDartVersionFromYAML(yaml);
 
 	return <ChannelessVersion>{
 		flutter: flutterVersion,
-		dart: dartVersion,
-	}
+		dart: dartVersion
+	};
 }
 
 function extractDartVersionFromLock(yaml: string) {
