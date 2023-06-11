@@ -1,9 +1,10 @@
-import supportedVersions, {
+import {
 	Channel,
 	ComparableVersion,
 	FallbackBetaVersion,
 	FallbackStableVersion,
 	UnknownDartVersion,
+	SupportedVersions,
 	versionToNumber
 } from './version';
 
@@ -25,7 +26,7 @@ export default function (
 
 	const dartVersionNumber = versionToNumber(dart);
 
-	const supportedVersion = supportedVersions.find(
+	const supportedVersion = SupportedVersions.find(
 		(x) => x.dartNumber === dartVersionNumber && x.channel === channel
 	);
 
@@ -33,13 +34,13 @@ export default function (
 		return supportedVersion;
 	}
 
-	const higherVersions = supportedVersions.filter(
+	const higherVersions = SupportedVersions.filter(
 		(x) => x.dartNumber > dartVersionNumber && x.channel === channel
 	);
 
 	return higherVersions.length > 0
 		? higherVersions[higherVersions.length - 1]
 		: channel === 'stable'
-		? FallbackStableVersion
-		: FallbackBetaVersion;
+			? FallbackStableVersion
+			: FallbackBetaVersion;
 }
