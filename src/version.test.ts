@@ -16,7 +16,7 @@ describe('version', function () {
 			const version = '1.0.0';
 
 			const versionNumber = versionToNumber(version);
-			const expectedVersionNumber = 101;
+			const expectedVersionNumber = 100;
 
 			expect(versionNumber).toStrictEqual(expectedVersionNumber);
 		});
@@ -25,7 +25,7 @@ describe('version', function () {
 			const version = '2.1.0';
 
 			const versionNumber = versionToNumber(version);
-			const expectedVersionNumber = 211;
+			const expectedVersionNumber = 610;
 
 			expect(versionNumber).toStrictEqual(expectedVersionNumber);
 		});
@@ -34,7 +34,7 @@ describe('version', function () {
 			const version = '3.2.1';
 
 			const versionNumber = versionToNumber(version);
-			const expectedVersionNumber = 322;
+			const expectedVersionNumber = 921;
 
 			expect(versionNumber).toStrictEqual(expectedVersionNumber);
 		});
