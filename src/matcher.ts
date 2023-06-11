@@ -41,6 +41,6 @@ export default function (
 	return higherVersions.length > 0
 		? higherVersions[higherVersions.length - 1]
 		: channel === 'stable'
-			? FallbackStableVersion
-			: FallbackBetaVersion;
+		? FallbackStableVersion
+		: FallbackBetaVersion;
 }

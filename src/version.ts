@@ -1,4 +1,4 @@
-import versions from "./version.supported";
+import versions from './version.supported';
 
 /**
  * The, channel in which the version is available
@@ -21,7 +21,9 @@ export type ComparableVersion = {
 	dartNumber: number;
 } & Version;
 
-export const SupportedVersions = versions.map((x) => <ComparableVersion>{ ...x }) satisfies ComparableVersion[];
+export const SupportedVersions = versions.map(
+	(x) => <ComparableVersion>{ ...x }
+) satisfies ComparableVersion[];
 
 export const FallbackStableVersion = <ComparableVersion>{
 	...SupportedVersions.find((x) => x.channel === 'stable')
@@ -46,18 +48,18 @@ export function versionToNumber(version: string) {
 		.split('.')
 		.filter((x) => x !== '');
 
-	return versionSplit.reduce(
-		(p, c, i) => p + versionPartToNumber(c, i),
-		0
-	);
+	return versionSplit.reduce((p, c, i) => p + versionPartToNumber(c, i), 0);
 }
 
 function versionPartToNumber(part: string, index: number) {
-	const base = ((10 ** (2 - index)) * Number.parseInt(part)) * (index === 0 && part > '1' ? (index + 1) * 3 : 1)
+	const base =
+		10 ** (2 - index) *
+		Number.parseInt(part) *
+		(index === 0 && part > '1' ? (index + 1) * 3 : 1);
 
 	if (part.length === 1) {
 		return base;
 	}
 
-	return base + Number.parseInt(part.slice(1))
+	return base + Number.parseInt(part.slice(1));
 }
