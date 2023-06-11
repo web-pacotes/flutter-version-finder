@@ -1,6 +1,11 @@
 import matcher from './matcher';
 import parse from './parser';
-import { Channel, UnknownDartVersion, Version } from './version';
+import {
+	Channel,
+	UnknownDartVersion,
+	Version,
+	versionToNumber
+} from './version';
 
 /**
  * Find the supported Flutter version for a pubspec.yaml/lock file.
@@ -9,7 +14,24 @@ import { Channel, UnknownDartVersion, Version } from './version';
  * @returns The matched {@link Version} that is supported  for the project described by the pubspec file.
  */
 export default function (yaml: string, channel?: Channel): Version {
-	const dartVersion = parse(yaml) ?? UnknownDartVersion;
+	const versions = parse(yaml);
+	const parsedFlutterVersion = versions.flutter;
+	const parsedDartVersion = versions.dart ?? UnknownDartVersion;
 
-	return matcher(dartVersion, channel);
+	const matchedVersion = matcher(parsedDartVersion, channel);
+
+	if (!parsedFlutterVersion) {
+		return matchedVersion;
+	}
+
+	const parsedFlutterVersionNumber = versionToNumber(parsedFlutterVersion);
+
+	if (matchedVersion.flutterNumber >= parsedFlutterVersionNumber) {
+		return matchedVersion;
+	}
+
+	return <Version>{
+		...matchedVersion,
+		flutter: parsedFlutterVersion
+	};
 }
